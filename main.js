@@ -15,7 +15,7 @@ console.log("[FIREBASE] Cloud Database Active.");
 // --- ADMIN SECURE CONSTANTS ---
 const ADMIN_HASH = 'RW1hbjE2NSo='; // btoa('Eman165*')
 const ADMIN_KEY_PAYLOAD = 'UEszSFRFTDYyQzVWREJNU0JNNjdPWEJUVE8=';
-const ADMIN_SECRET_PAYLOAD = 'Qzd1UHBwb1dkRWQ3OGcxcTR1MUdDTmUyaU5VamNVMW9DOTNySDZ4Rjl1ZlQ=';
+const ADMIN_SECRET_PAYLOAD = 'Qzd1VXFwb1dkRWQ3OGcxcTR1MUdDTmUyaU5VamNVMW9DOTNySDZ4Rjl1ZlQ=';
 
 // --- MOCK DATA ---
 const STOCK_LIST = [
@@ -89,7 +89,7 @@ let automationActive = localStorage.getItem('vander_bot_active') === 'true';
 // --- BROKERAGE CONFIG (Moved to top) ---
 // Obfuscated Credentials (Base64) - Decoded at runtime
 const _k = 'UEszSFRFTDYyQzVWREJNU0JNNjdPWEJUVE8=';
-const _s = 'Qzd1UHBwb1dkRWQ3OGcxcTR1MUdDTmUyaU5VamNVMW9DOTNySDZ4Rjl1ZlQ=';
+const _s = 'Qzd1VXFwb1dkRWQ3OGcxcTR1MUdDTmUyaU5VamNVMW9DOTNySDZ4Rjl1ZlQ=';
 
 let brokerKey = localStorage.getItem('vander_broker_key') || atob(_k);
 let brokerSecret = localStorage.getItem('vander_broker_secret') || atob(_s);
@@ -429,10 +429,16 @@ function initAuthSystem() {
         localStorage.setItem('vander_session_active', 'true');
         localStorage.setItem('vander_current_user', username);
 
-        // Apply identity-specific brokering
+        // Apply identity-specific brokering (Persistent Manual Mode)
         if (username.toLowerCase() === 'yahia admin') {
-            brokerKey = atob(ADMIN_KEY_PAYLOAD);
-            brokerSecret = atob(ADMIN_SECRET_PAYLOAD);
+            const storedKey = localStorage.getItem('vander_broker_key');
+            const storedSec = localStorage.getItem('vander_broker_secret');
+
+            // Priority 1: User's manually entered keys
+            // Priority 2: System hardcoded fallback
+            brokerKey = storedKey || atob(ADMIN_KEY_PAYLOAD);
+            brokerSecret = storedSec || atob(ADMIN_SECRET_PAYLOAD);
+
             const adminNav = document.getElementById('nav-admin-btn');
             if (adminNav) adminNav.style.display = 'block';
             if (typeof initAdminListener === 'function') initAdminListener();
