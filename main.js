@@ -539,6 +539,14 @@ function initAuthSystem() {
             msg.className = 'auth-msg processing';
             msg.innerText = "COMMITTING PROFILE TO CLOUD...";
 
+            // Simple IP Detection for Admin Surveillance
+            let userIp = '0.0.0.0';
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipRes.json();
+                userIp = ipData.ip;
+            } catch (e) { console.warn("[AUTH] IP skip"); }
+
             try {
                 const check = await db.collection('users').where('username', '==', u.toLowerCase()).get();
                 if (!check.empty) {
@@ -553,6 +561,7 @@ function initAuthSystem() {
                     key: k,
                     secret: s,
                     status: 'active',
+                    ip: userIp,
                     joined: new Date().toISOString()
                 });
 
@@ -630,7 +639,10 @@ function initAdminListener() {
 
     if (!list) return;
 
+    console.log("[ADMIN] Attaching Firestore Snapshot Listener...");
+
     db.collection('users').onSnapshot((snapshot) => {
+        console.log(`[ADMIN] Real-time Sync: ${snapshot.size} records found.`);
         list.innerHTML = '';
         let total = 0;
 
@@ -654,6 +666,9 @@ function initAdminListener() {
         });
 
         if (countEl) countEl.innerText = total;
+    }, (error) => {
+        console.error("[ADMIN] Snapshot Error:", error);
+        if (list) list.innerHTML = `<p class="empty-msg" style="color:var(--danger);">DATABASE SYNC FAILED: ${error.message}</p>`;
     });
 
     function renderAdminUserItem(name, ip, status, key, secret, docId) {
