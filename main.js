@@ -46,33 +46,175 @@ const STOCK_LIST = [
     { id: 'mstr', name: 'MicroStrategy', symbol: 'MSTR', price: 1600.44, change: +12.1, trend: 'up', vol: 'high', cap: 'mid' },
     { id: 'arm', name: 'ARM Holdings', symbol: 'ARM', price: 130.12, change: +6.4, trend: 'up', vol: 'high', cap: 'large' },
     { id: 'smci', name: 'Super Micro', symbol: 'SMCI', price: 900.44, change: +8.2, trend: 'up', vol: 'high', cap: 'mid' },
-    { id: 'gme', name: 'GameStop Corp', symbol: 'GME', price: 15.44, change: +25.1, trend: 'up', vol: 'high', cap: 'small' },
-    { id: 'amc', name: 'AMC Entertain', symbol: 'AMC', price: 4.12, change: +12.4, trend: 'up', vol: 'high', cap: 'small' },
-    { id: 'hood', name: 'Robinhood', symbol: 'HOOD', price: 18.33, change: +2.1, trend: 'up', vol: 'mid', cap: 'mid' },
-    { id: 'rivn', name: 'Rivian Auto', symbol: 'RIVN', price: 11.44, change: -3.2, trend: 'down', vol: 'high', cap: 'small' },
-    { id: 'lcid', name: 'Lucid Group', symbol: 'LCID', price: 3.12, change: -1.1, trend: 'down', vol: 'mid', cap: 'small' },
-    { id: 'dkng', name: 'DraftKings', symbol: 'DKNG', price: 45.33, change: +4.2, trend: 'up', vol: 'high', cap: 'mid' },
-    { id: 'pypl', name: 'PayPal Hold', symbol: 'PYPL', price: 64.12, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
-    { id: 'lyft', name: 'Lyft Inc', symbol: 'LYFT', price: 18.44, change: +2.5, trend: 'up', vol: 'mid', cap: 'small' },
+    // Popular US Stocks
+    { id: 'adbe', name: 'Adobe Inc', symbol: 'ADBE', price: 505.22, change: +0.2, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'crm', name: 'Salesforce', symbol: 'CRM', price: 295.11, change: +1.2, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'avgo', name: 'Broadcom Inc', symbol: 'AVGO', price: 1250.44, change: +2.5, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'intc', name: 'Intel Corp', symbol: 'INTC', price: 44.12, change: -0.8, trend: 'down', vol: 'high', cap: 'large' },
+    { id: 'mu', name: 'Micron Tech', symbol: 'MU', price: 95.33, change: +3.1, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'txn', name: 'Texas Instruments', symbol: 'TXN', price: 165.44, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'qcom', name: 'Qualcomm Inc', symbol: 'QCOM', price: 170.12, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'amd', name: 'AMD', symbol: 'AMD', price: 180.45, change: +3.2, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'lrcx', name: 'Lam Research', symbol: 'LRCX', price: 920.44, change: +1.8, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'amat', name: 'Applied Materials', symbol: 'AMAT', price: 205.12, change: +2.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'klac', name: 'KLA Corp', symbol: 'KLAC', price: 680.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'panw', name: 'Palo Alto Networks', symbol: 'PANW', price: 290.12, change: +4.2, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'ftnt', name: 'Fortinet Inc', symbol: 'FTNT', price: 70.44, change: +2.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'zscaler', name: 'Zscaler Inc', symbol: 'ZS', price: 200.12, change: +3.2, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'mndy', name: 'Monday.com', symbol: 'MNDY', price: 220.44, change: +5.4, trend: 'up', vol: 'mid', cap: 'mid' },
+    { id: 'asml', name: 'ASML Holding', symbol: 'ASML', price: 950.12, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'tsm', name: 'Taiwan Semi', symbol: 'TSM', price: 140.44, change: +2.8, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'pfe', name: 'Pfizer Inc', symbol: 'PFE', price: 27.12, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'mrna', name: 'Moderna Inc', symbol: 'MRNA', price: 105.33, change: +4.2, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'bntx', name: 'BioNTech', symbol: 'BNTX', price: 94.44, change: +3.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'lly', name: 'Eli Lilly', symbol: 'LLY', price: 750.12, change: +2.5, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'novo', name: 'Novo Nordisk', symbol: 'NVO', price: 125.44, change: +3.2, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'v', name: 'Visa Inc', symbol: 'V', price: 280.12, change: +0.3, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ma', name: 'Mastercard', symbol: 'MA', price: 460.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'pypl', name: 'PayPal', symbol: 'PYPL', price: 64.12, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'axp', name: 'American Express', symbol: 'AXP', price: 220.12, change: +1.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'gs', name: 'Goldman Sachs', symbol: 'GS', price: 390.44, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ms', name: 'Morgan Stanley', symbol: 'MS', price: 85.12, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'bac', name: 'Bank of America', symbol: 'BAC', price: 35.33, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'c', name: 'Citigroup', symbol: 'C', price: 55.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'blk', name: 'BlackRock', symbol: 'BLK', price: 810.12, change: +0.3, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'mco', name: 'Moodys Corp', symbol: 'MCO', price: 380.44, change: +0.6, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'spgi', name: 'S&P Global', symbol: 'SPGI', price: 420.12, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'nike', name: 'Nike Inc', symbol: 'NKE', price: 95.33, change: -1.2, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'sbux', name: 'Starbucks', symbol: 'SBUX', price: 90.44, change: -0.5, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'mcd', name: 'McDonalds', symbol: 'MCD', price: 285.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'hd', name: 'Home Depot', symbol: 'HD', price: 380.44, change: +1.1, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'low', name: 'Lowes Cos', symbol: 'LOW', price: 235.12, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'tgt', name: 'Target Corp', symbol: 'TGT', price: 170.44, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'cvs', name: 'CVS Health', symbol: 'CVS', price: 75.12, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'tmt', name: 'T-Mobile US', symbol: 'TMUS', price: 165.44, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'vz', name: 'Verizon', symbol: 'VZ', price: 40.12, change: -0.2, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 't', name: 'AT&T Inc', symbol: 'T', price: 17.33, change: -0.1, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'dis', name: 'Disney', symbol: 'DIS', price: 112.33, change: -2.1, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'cmcsa', name: 'Comcast Corp', symbol: 'CMCSA', price: 42.44, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'nflx', name: 'Netflix', symbol: 'NFLX', price: 610.44, change: +1.8, trend: 'up', vol: 'high', cap: 'large' },
+    { id: 'para', name: 'Paramount', symbol: 'PARA', price: 11.12, change: -3.5, trend: 'down', vol: 'high', cap: 'mid' },
+    { id: 'wbd', name: 'Warner Bros', symbol: 'WBD', price: 8.44, change: -2.8, trend: 'down', vol: 'high', cap: 'mid' },
+    { id: 'rblx', name: 'Roblox Corp', symbol: 'RBLX', price: 38.12, change: +5.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'u', name: 'Unity Software', symbol: 'U', price: 25.44, change: -4.5, trend: 'down', vol: 'high', cap: 'mid' },
+    { id: 'ttwo', name: 'Take-Two', symbol: 'TTWO', price: 150.12, change: +1.2, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'ea', name: 'Electronic Arts', symbol: 'EA', price: 135.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'uber', name: 'Uber', symbol: 'UBER', price: 78.44, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'lyft', name: 'Lyft', symbol: 'LYFT', price: 18.44, change: +2.5, trend: 'up', vol: 'mid', cap: 'small' },
+    { id: 'dash', name: 'DoorDash', symbol: 'DASH', price: 125.12, change: +3.2, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'abnb', name: 'Airbnb Inc', symbol: 'ABNB', price: 160.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'bkng', name: 'Booking Hold', symbol: 'BKNG', price: 3500.22, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'expd', name: 'Expedia Group', symbol: 'EXPE', price: 135.12, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'aal', name: 'American Air', symbol: 'AAL', price: 14.44, change: -1.5, trend: 'down', vol: 'mid', cap: 'mid' },
+    { id: 'dal', name: 'Delta Air', symbol: 'DAL', price: 42.12, change: +0.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'ual', name: 'United Air', symbol: 'UAL', price: 45.33, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'luv', name: 'Southwest Air', symbol: 'LUV', price: 28.44, change: -0.8, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'ge', name: 'GE Aerospace', symbol: 'GE', price: 160.12, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'rtx', name: 'RTX Corp', symbol: 'RTX', price: 95.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'lmt', name: 'Lockheed Martin', symbol: 'LMT', price: 450.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'noc', name: 'Northrop Grumman', symbol: 'NOC', price: 460.44, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'gd', name: 'Gen Dynamics', symbol: 'GD', price: 280.12, change: +0.6, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cat', name: 'Caterpillar', symbol: 'CAT', price: 340.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'de', name: 'Deere & Co', symbol: 'DE', price: 380.12, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'hon', name: 'Honeywell', symbol: 'HON', price: 200.44, change: -0.2, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'mmm', name: '3M Company', symbol: 'MMM', price: 95.12, change: -1.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'f', name: 'Ford Motor', symbol: 'F', price: 12.33, change: -0.5, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'gm', name: 'General Motors', symbol: 'GM', price: 40.44, change: +0.8, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'tm', name: 'Toyota Motor', symbol: 'TM', price: 230.12, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'honda', name: 'Honda Motor', symbol: 'HMC', price: 35.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'rivn', name: 'Rivian', symbol: 'RIVN', price: 11.44, change: -3.2, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'lcid', name: 'Lucid', symbol: 'LCID', price: 3.12, change: -1.1, trend: 'down', vol: 'mid', cap: 'small' },
+    { id: 'nkla', name: 'Nikola', symbol: 'NKLA', price: 0.75, change: -5.5, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'nio', name: 'NIO', symbol: 'NIO', price: 5.12, change: -2.1, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'xpeng', name: 'XPeng', symbol: 'XPENG', price: 8.44, change: -1.8, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'li', name: 'Li Auto', symbol: 'LI', price: 30.12, change: -3.5, trend: 'down', vol: 'mid', cap: 'mid' },
+    { id: 'pdd', name: 'PDD Hold', symbol: 'PDD', price: 120.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'baba', name: 'Alibaba', symbol: 'BABA', price: 75.33, change: -0.4, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'jd', name: 'JD.com', symbol: 'JD', price: 26.44, change: -1.2, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'bidu', name: 'Baidu Inc', symbol: 'BIDU', price: 105.12, change: -0.8, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'ntes', name: 'NetEase Inc', symbol: 'NTES', price: 100.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
     { id: 'tme', name: 'Tencent Music', symbol: 'TME', price: 11.12, change: +0.8, trend: 'up', vol: 'low', cap: 'mid' },
-    { id: 'baba', name: 'Alibaba Group', symbol: 'BABA', price: 75.33, change: -0.4, trend: 'down', vol: 'mid', cap: 'large' },
-    { id: 'jd', name: 'JD.com Inc', symbol: 'JD', price: 26.44, change: -1.2, trend: 'down', vol: 'mid', cap: 'large' },
-    { id: 'nio', name: 'NIO Inc', symbol: 'NIO', price: 5.12, change: -2.1, trend: 'down', vol: 'high', cap: 'small' },
-    { id: 'xpeng', name: 'XPeng Inc', symbol: 'XPENG', price: 8.44, change: -1.8, trend: 'down', vol: 'high', cap: 'small' },
-    { id: 'li', name: 'Li Auto Inc', symbol: 'LI', price: 30.12, change: -3.5, trend: 'down', vol: 'mid', cap: 'mid' },
-    { id: 'pdd', name: 'PDD Holdings', symbol: 'PDD', price: 120.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
-    { id: 'zm', name: 'Zoom Video', symbol: 'ZM', price: 65.12, change: -0.2, trend: 'down', vol: 'low', cap: 'mid' },
-    { id: 'twlo', name: 'Twilio Inc', symbol: 'TWLO', price: 60.44, change: +0.5, trend: 'up', vol: 'low', cap: 'mid' },
-    { id: 'okta', name: 'Okta Inc', symbol: 'OKTA', price: 95.12, change: +1.2, trend: 'up', vol: 'low', cap: 'mid' },
-    { id: 'ddog', name: 'Datadog Inc', symbol: 'DDOG', price: 125.44, change: +2.1, trend: 'up', vol: 'mid', cap: 'mid' },
-    { id: 'zs', name: 'Zscaler Inc', symbol: 'ZS', price: 200.12, change: +3.2, trend: 'up', vol: 'mid', cap: 'mid' },
-    { id: 'pala', name: 'Palantir AI', symbol: 'PLTR', price: 24.55, change: +6.1, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'meli', name: 'MercadoLibre', symbol: 'MELI', price: 1650.44, change: +2.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'sea', name: 'Sea Ltd', symbol: 'SE', price: 55.12, change: +4.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'cpng', name: 'Coupang Inc', symbol: 'CPNG', price: 19.44, change: +1.5, trend: 'up', vol: 'low', cap: 'mid' },
+    { id: 'nke', name: 'Nike', symbol: 'NKE', price: 95.33, change: -1.2, trend: 'down', vol: 'mid', cap: 'large' },
+    { id: 'adidas', name: 'Adidas AG', symbol: 'ADDYY', price: 105.12, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ul', name: 'Unilever', symbol: 'UL', price: 50.44, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'pg', name: 'Procter & Gamble', symbol: 'PG', price: 160.12, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ko', name: 'Coca-Cola', symbol: 'KO', price: 60.12, change: +0.3, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'pep', name: 'PepsiCo', symbol: 'PEP', price: 170.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cost', name: 'Costco', symbol: 'COST', price: 730.12, change: +0.1, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'wmt', name: 'Walmart', symbol: 'WMT', price: 60.12, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'tgt', name: 'Target', symbol: 'TGT', price: 170.44, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'cvs', name: 'CVS', symbol: 'CVS', price: 75.12, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
     { id: 'unh', name: 'UnitedHealth', symbol: 'UNH', price: 480.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
     { id: 'hca', name: 'HCA Healthcare', symbol: 'HCA', price: 310.44, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
-    { id: 'cvs', name: 'CVS Health', symbol: 'CVS', price: 75.12, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
-    { id: 'mrk', name: 'Merck & Co', symbol: 'MRK', price: 125.44, change: +1.4, trend: 'up', vol: 'low', cap: 'large' },
-    { id: 'lily', name: 'Eli Lilly', symbol: 'LLY', price: 750.12, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
-];
+    { id: 'antm', name: 'Elevance Health', symbol: 'ELV', price: 500.12, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ci', name: 'Cigna Group', symbol: 'CI', price: 340.44, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'hum', name: 'Humana Inc', symbol: 'HUM', price: 350.12, change: -1.2, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'syk', name: 'Stryker Corp', symbol: 'SYK', price: 350.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'mdt', name: 'Medtronic', symbol: 'MDT', price: 85.12, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'isrg', name: 'Intuitive Surg', symbol: 'ISRG', price: 390.44, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'zts', name: 'Zoetis Inc', symbol: 'ZTS', price: 180.12, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'idxx', name: 'IDEXX Labs', symbol: 'IDXX', price: 550.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'el', name: 'Estee Lauder', symbol: 'EL', price: 150.12, change: -2.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'loreal', name: 'LOreal', symbol: 'LRLCY', price: 95.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'mc', name: 'LVMH', symbol: 'LVMUY', price: 180.12, change: +1.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'or', name: 'Hermes', symbol: 'HESAY', price: 230.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'rms', name: 'Hermes', symbol: 'HESAF', price: 2300.11, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ker', name: 'Kering', symbol: 'PPRUY', price: 40.12, change: -2.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'race', name: 'Ferrari', symbol: 'RACE', price: 400.44, change: +2.1, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'stla', name: 'Stellantis', symbol: 'STLA', price: 25.12, change: +1.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'vow', name: 'Volkswagen', symbol: 'VWAGY', price: 15.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'bmw', name: 'BMW', symbol: 'BMWYY', price: 35.12, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'mbg', name: 'Mercedes-Benz', symbol: 'MBGYY', price: 20.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'ups', name: 'UPS Inc', symbol: 'UPS', price: 145.12, change: -0.8, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'fdx', name: 'FedEx Corp', symbol: 'FDX', price: 250.44, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'dhl', name: 'DHL Group', symbol: 'DHLGY', price: 45.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cat', name: 'Caterpillar', symbol: 'CAT', price: 340.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'de', name: 'Deere', symbol: 'DE', price: 380.12, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'pcar', name: 'PACCAR Inc', symbol: 'PCAR', price: 115.44, change: +1.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cmi', name: 'Cummins Inc', symbol: 'CMI', price: 270.12, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'xom', name: 'Exxon Mobil', symbol: 'XOM', price: 115.44, change: +0.8, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cvx', name: 'Chevron Corp', symbol: 'CVX', price: 155.12, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'shel', name: 'Shell PLC', symbol: 'SHEL', price: 65.44, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'tte', name: 'TotalEnergies', symbol: 'TTE', price: 65.11, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'bp', name: 'BP PLC', symbol: 'BP', price: 35.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'cop', name: 'ConocoPhillips', symbol: 'COP', price: 115.44, change: +0.6, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'oxy', name: 'Occidental', symbol: 'OXY', price: 60.12, change: +0.3, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'enbr', name: 'Enbridge Inc', symbol: 'ENB', price: 35.44, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'slb', name: 'Schlumberger', symbol: 'SLB', price: 50.12, change: -0.5, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'hal', name: 'Halliburton', symbol: 'HAL', price: 35.44, change: -0.8, trend: 'down', vol: 'low', cap: 'large' },
+    { id: 'ge', name: 'GE', symbol: 'GE', price: 160.12, change: +2.5, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'nee', name: 'NextEra Energy', symbol: 'NEE', price: 55.44, change: +0.5, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'dukq', name: 'Duke Energy', symbol: 'DUK', price: 95.12, change: +0.3, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'so', name: 'Southern Co', symbol: 'SO', price: 70.44, change: +0.4, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'd', name: 'Dominion Energy', symbol: 'D', price: 45.12, change: +0.2, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'exc', name: 'Exelon Corp', symbol: 'EXC', price: 35.44, change: +0.1, trend: 'up', vol: 'low', cap: 'large' },
+    { id: 'plug', name: 'Plug Power', symbol: 'PLUG', price: 3.44, change: -8.5, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'fslr', name: 'First Solar', symbol: 'FSLR', price: 155.12, change: +2.5, trend: 'up', vol: 'mid', cap: 'mid' },
+    { id: 'enph', name: 'Enphase Energy', symbol: 'ENPH', price: 115.44, change: +4.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'sedg', name: 'SolarEdge', symbol: 'SEDG', price: 65.12, change: -5.5, trend: 'down', vol: 'high', cap: 'mid' },
+    { id: 'run', name: 'Sunrun Inc', symbol: 'RUN', price: 12.44, change: -4.5, trend: 'down', vol: 'high', cap: 'small' },
+    { id: 'pltr', name: 'Palantir', symbol: 'PLTR', price: 24.12, change: +4.5, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'ai', name: 'C3.ai Inc', symbol: 'AI', price: 28.44, change: +3.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'path', name: 'UiPath Inc', symbol: 'PATH', price: 22.12, change: +1.5, trend: 'up', vol: 'mid', cap: 'mid' },
+    { id: 'snow', name: 'Snowflake', symbol: 'SNOW', price: 160.12, change: -1.5, trend: 'down', vol: 'mid', cap: 'mid' },
+    { id: 'databricks', name: 'Databricks', symbol: 'DBX', price: 25.44, change: +0.5, trend: 'up', vol: 'low', cap: 'mid' },
+    { id: 'okta', name: 'Okta', symbol: 'OKTA', price: 95.12, change: +1.2, trend: 'up', vol: 'low', cap: 'mid' },
+    { id: 'twlo', name: 'Twilio', symbol: 'TWLO', price: 60.44, change: +0.5, trend: 'up', vol: 'low', cap: 'mid' },
+    { id: 'net', name: 'Cloudflare', symbol: 'NET', price: 95.12, change: +3.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'fsly', name: 'Fastly Inc', symbol: 'FSLY', price: 12.44, change: +1.5, trend: 'up', vol: 'mid', cap: 'small' },
+    { id: 'unity', name: 'Unity', symbol: 'U', price: 25.44, change: -4.5, trend: 'down', vol: 'high', cap: 'mid' },
+    { id: 'app', name: 'AppLovin', symbol: 'APP', price: 65.12, change: +8.5, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'is', name: 'IronSource', symbol: 'IS', price: 4.44, change: +0.5, trend: 'up', vol: 'low', cap: 'small' },
+    { id: 'afrm', name: 'Affirm Hold', symbol: 'AFRM', price: 35.12, change: +12.4, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'sq', name: 'Block', symbol: 'SQ', price: 82.33, change: +3.5, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'pypl', name: 'PayPal', symbol: 'PYPL', price: 64.12, change: +1.1, trend: 'up', vol: 'mid', cap: 'large' },
+    { id: 'coin', name: 'Coinbase', symbol: 'COIN', price: 240.55, change: +7.2, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'mstr', name: 'MicroStrategy', symbol: 'MSTR', price: 1600.44, change: +12.1, trend: 'up', vol: 'high', cap: 'mid' },
+    { id: 'hood', name: 'Robinhood', symbol: 'HOOD', price: 18.33, change: +2.1, trend: 'up', vol: 'mid', cap: 'mid' },
+];;
 
 let currentChart = null;
 let miniChart = null;
@@ -632,8 +774,37 @@ async function fetchLiveQuote(symbol) {
     }
 }
 
+// --- HIGH SPEED TICKER ---
+let activeTicker = null;
+function startActiveTicker() {
+    if (activeTicker) clearInterval(activeTicker);
+    activeTicker = setInterval(async () => {
+        if (liveMode && selectedStock) {
+            const data = await fetchLiveQuote(selectedStock.symbol);
+            if (data && data.c) {
+                selectedStock.price = data.c;
+                selectedStock.change = parseFloat(data.dp.toFixed(2));
+                selectedStock.trend = selectedStock.change >= 0 ? 'up' : 'down';
+                updateDashboard(selectedStock);
+                updateTradingHub(selectedStock);
+
+                // Also update in master list
+                const idx = STOCK_LIST.findIndex(s => s.symbol === selectedStock.symbol);
+                if (idx !== -1) {
+                    STOCK_LIST[idx].price = data.c;
+                    STOCK_LIST[idx].change = selectedStock.change;
+                    STOCK_LIST[idx].trend = selectedStock.trend;
+                }
+            }
+        }
+    }, 2500);
+}
+
 async function refreshAllLive() {
     if (!liveMode) return;
+
+    // Start active ticker if not running
+    if (!activeTicker) startActiveTicker();
 
     addLog('[AI] Syncing 50+ assets with Wall Street servers...', 'system');
 
@@ -743,6 +914,47 @@ function renderTradeAssetList(filter = '') {
         s.name.toLowerCase().includes(filter.toLowerCase())
     );
 
+    // If no filtered results and filter is a symbol potentially, try search
+    if (filtered.length === 0 && filter.length >= 2) {
+        const item = document.createElement('div');
+        item.className = 'stock-item live-lookup';
+        item.style.border = '1px dashed var(--primary)';
+        item.innerHTML = `
+            <div class="stock-meta">
+                <h4>LIVE SEARCH: ${filter.toUpperCase()}</h4>
+                <p>Press to lookup real-time data</p>
+            </div>
+        `;
+        item.onclick = async () => {
+            item.innerHTML = '<p style="padding: 1rem; color: var(--primary);">DIALING ALAPCA/FINNHUB...</p>';
+            const liveData = await fetchLiveQuote(filter.toUpperCase());
+            if (liveData) {
+                const newStock = {
+                    id: filter.toLowerCase(),
+                    name: `Real-time Asset: ${filter.toUpperCase()}`,
+                    symbol: filter.toUpperCase(),
+                    price: liveData.c,
+                    change: liveData.dp || 0,
+                    trend: liveData.dp >= 0 ? 'up' : 'down',
+                    vol: 'high',
+                    cap: 'any'
+                };
+                // Check if already in list to avoid duplicates
+                if (!STOCK_LIST.find(s => s.symbol === newStock.symbol)) {
+                    STOCK_LIST.push(newStock);
+                }
+                selectedStock = newStock;
+                renderTradeAssetList(filter);
+                updateTradingHub(newStock);
+                updateDashboard(newStock);
+            } else {
+                item.innerHTML = '<p style="padding: 1rem; color: var(--danger);">ASSET NOT FOUND IN US MARKET</p>';
+                setTimeout(() => renderTradeAssetList(filter), 2000);
+            }
+        };
+        list.appendChild(item);
+    }
+
     filtered.forEach(stock => {
         const item = document.createElement('div');
         item.className = `stock-item ${stock.symbol === selectedStock.symbol ? 'active' : ''}`;
@@ -759,6 +971,7 @@ function renderTradeAssetList(filter = '') {
             selectedStock = stock;
             renderTradeAssetList(filter); // Refresh selection
             updateTradingHub(stock);
+            updateDashboard(stock);
         };
         list.appendChild(item);
     });
