@@ -650,6 +650,7 @@ async function refreshAllLive() {
 
     renderStockList();
     renderStrategyLists();
+    renderTradeAssetList();
     updateDashboard(selectedStock);
     updateTradingHub(selectedStock);
     addLog('[SUCCESS] Live Market Data Sync Complete.', 'trade');
@@ -2176,7 +2177,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setupAutomation();
         renderStockList();
         renderStrategyLists();
+        renderTradeAssetList();
         updateDashboard(selectedStock);
+        updateTradingHub(selectedStock);
 
         // --- AUTO-LINK PROTOCOL ---
         if (brokerKey && brokerSecret) {
