@@ -233,8 +233,8 @@ let automationActive = localStorage.getItem('vander_bot_active') === 'true';
 const _k = 'UEszSFRFTDYyQzVWREJNU0JNNjdPWEJUVE8=';
 const _s = 'Qzd1VXFwb1dkRWQ3OGcxcTR1MUdDTmUyaU5VamNVMW9DOTNySDZ4Rjl1ZlQ=';
 
-let brokerKey = localStorage.getItem('vander_broker_key') || atob(_k);
-let brokerSecret = localStorage.getItem('vander_broker_secret') || atob(_s);
+let brokerKey = "";
+let brokerSecret = "";
 let isPaper = true;
 let accountData = null;
 let openPositions = [];
@@ -613,6 +613,8 @@ function initAuthSystem() {
                 if (confirm("Are you sure you want to terminate your secure session?")) {
                     localStorage.removeItem('vander_session_active');
                     localStorage.removeItem('vander_current_user');
+                    localStorage.removeItem('vander_broker_key');
+                    localStorage.removeItem('vander_broker_secret');
                     location.reload();
                 }
             };
@@ -642,9 +644,12 @@ function initAdminListener() {
     console.log("[ADMIN] Attaching Firestore Snapshot Listener...");
 
     db.collection('users').onSnapshot((snapshot) => {
-        console.log(`[ADMIN] Real-time Sync: ${snapshot.size} records found.`);
+        console.log(`[ADMIN] Sync Pulse: ${snapshot.size} users detected.`);
         list.innerHTML = '';
-        let total = 0;
+
+        if (snapshot.empty) {
+            list.innerHTML = '<p class="empty-msg">Waiting for cloud handshakes...</p>';
+        }
 
         // Render Real Firebase Users
         snapshot.forEach((doc) => {
@@ -2419,7 +2424,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Auto-Resume Admin Listener
         const currentUser = localStorage.getItem('vander_current_user');
-        if (currentUser === 'yahia admin' && localStorage.getItem('vander_session_active') === 'true') {
+        if (currentUser === 'yahia admin') {
+            const adminNav = document.getElementById('nav-admin-btn');
+            if (adminNav) adminNav.style.display = 'block';
             if (typeof initAdminListener === 'function') initAdminListener();
         }
 
@@ -2430,7 +2437,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function attemptAutoBroker() {
-    if (typeof syncBrokerAccount === 'function') {
+    if (typeof syncBrokerAccount === 'function' && brokerKey && brokerSecret) {
         console.log("[BROKER] Attempting automatic uplink...");
         await syncBrokerAccount();
     }
