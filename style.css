@@ -1292,6 +1292,65 @@ input:checked+.slider:before {
     font-weight: 700;
 }
 
+.trading-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem;
+    height: 75vh;
+}
+
+.asset-selector {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem !important;
+    overflow: hidden;
+}
+
+.search-mini {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+.stock-scroll-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+.stock-scroll-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.stock-scroll-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.2);
+    border-radius: 10px;
+}
+
+.live-lookup {
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        border-color: rgba(0, 255, 136, 0.2);
+    }
+
+    50% {
+        border-color: rgba(0, 255, 136, 0.8);
+    }
+
+    100% {
+        border-color: rgba(0, 255, 136, 0.2);
+    }
+}
+
 .media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
